@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">代理切换</string>
+    <string name="dialog_title_special_permissions">权限申请</string>
+    <string name="dialog_message_special_permissions">此应用程序需要特殊权限，只有通过将此设备连接到您的计算机并从终端运行命令才能授予这些权限。</string>
+    <string name="disconnected">断开</string>
+    <string name="connected">连接</string>
+    <string name="hint_ip_address">IP地址</string>
+    <string name="hint_port">端口</string>
+    <string name="error_invalid_port">请输入有效端口</string>
+    <string name="error_invalid_address">请输入有效IP地址</string>
+    <string name="dialog_message_information">在启用代理的情况下卸载应用程序将使您的设备永久保留此设置。在卸载应用程序之前，请确保已禁用代理！</string>
+    <string name="dialog_action_close">关闭</string>
+    <string name="no_proxy_tile">无代理</string>
+    <string name="widget_label_ip_address">IP地址</string>
+    <string name="widget_label_port">端口</string>
+    <string name="widget_not_set">未设置</string>
+    <string name="information">信息</string>
+    <string name="switch_theme">切换主题</string>
+    <string name="enable_proxy">启用代理</string>
+    <string name="disable_proxy">关闭代理</string>
+    <string name="past_proxies_dropdown">使用过的代理</string>
+    <string name="settings">打开App设置</string>
+    <string name="toggle_proxy">代理切换</string>
+    <string name="toggle_cancel">取消</string>
+</resources>

@@ -69,6 +69,9 @@ class ProxyManagerViewModel @Inject constructor(
         when (userInteraction) {
             UserInteraction.ToggleProxyClicked -> toggleProxy()
             UserInteraction.SwitchThemeClicked -> toggleTheme()
+            UserInteraction.ResetClicked -> {
+                deviceSettingsManager.disableProxy()
+            }
             is UserInteraction.AddressChanged -> onAddressChanged(userInteraction.newAddress)
             is UserInteraction.PortChanged -> onPortChanged(userInteraction.newPort)
             is UserInteraction.ProxyFromDropDownSelected -> onProxySelected(userInteraction.proxy)
@@ -222,6 +225,8 @@ class ProxyManagerViewModel @Inject constructor(
     sealed class UserInteraction {
         object ToggleProxyClicked : UserInteraction()
         object SwitchThemeClicked : UserInteraction()
+
+        object ResetClicked : UserInteraction()
         data class AddressChanged(val newAddress: String) : UserInteraction()
         data class PortChanged(val newPort: String) : UserInteraction()
         data class ProxyFromDropDownSelected(val proxy: Proxy) : UserInteraction()

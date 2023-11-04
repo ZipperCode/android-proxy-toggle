@@ -1,0 +1,4 @@
+build:
+  maxIssues: -1
+  validation: false
+  warningsAsErrors: false

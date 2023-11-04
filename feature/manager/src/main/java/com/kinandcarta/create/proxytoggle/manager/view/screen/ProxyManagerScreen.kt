@@ -2,6 +2,7 @@
 
 package com.kinandcarta.create.proxytoggle.manager.view.screen
 
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,6 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
@@ -86,6 +88,7 @@ fun ProxyManagerScreenContent(
 
     var showInfoDialog by rememberSaveable { mutableStateOf(false) }
 
+    val context = LocalContext.current
     Surface {
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -94,6 +97,10 @@ fun ProxyManagerScreenContent(
             TopIcons(
                 onSwitchTheme = { onUserInteraction(UserInteraction.SwitchThemeClicked) },
                 onInfoClicked = { showInfoDialog = showInfoDialog.not() },
+                onResetClicked = {
+                    onUserInteraction(UserInteraction.ResetClicked)
+                    Toast.makeText(context, "重置成功", Toast.LENGTH_SHORT).show()
+                },
                 modifier = Modifier.align(Alignment.TopCenter)
             )
             MainLayout(
@@ -131,6 +138,7 @@ fun ProxyManagerScreenContent(
 fun TopIcons(
     onSwitchTheme: () -> Unit,
     onInfoClicked: () -> Unit,
+    onResetClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -142,11 +150,18 @@ fun TopIcons(
             icon = R.drawable.ic_switch_theme,
             contentDescription = R.string.switch_theme
         )
-        ProxyToggleIcon(
-            onClick = onInfoClicked,
-            icon = R.drawable.ic_info,
-            contentDescription = R.string.information
-        )
+        Row {
+            ProxyToggleIcon(
+                onClick = onResetClicked,
+                icon = R.drawable.ic_cancel,
+                contentDescription = R.string.toggle_cancel
+            )
+            ProxyToggleIcon(
+                onClick = onInfoClicked,
+                icon = R.drawable.ic_info,
+                contentDescription = R.string.information
+            )
+        }
     }
 }
 
